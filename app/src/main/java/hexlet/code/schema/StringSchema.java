@@ -1,9 +1,9 @@
 package hexlet.code.schema;
 
-public class StringSchema extends Schema<String> {
+public final class StringSchema extends Schema<String> {
 
     public StringSchema required() {
-        this.required = true;
+        setRequired(true);
         return this;
     }
 

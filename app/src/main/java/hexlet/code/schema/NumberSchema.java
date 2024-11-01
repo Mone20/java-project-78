@@ -1,9 +1,9 @@
 package hexlet.code.schema;
 
-public class NumberSchema extends Schema<Integer> {
+public final class NumberSchema extends Schema<Integer> {
 
     public NumberSchema required() {
-        this.required = true;
+        setRequired(true);
         return this;
     }
 

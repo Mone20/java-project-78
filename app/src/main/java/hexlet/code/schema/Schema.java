@@ -1,20 +1,24 @@
 package hexlet.code.schema;
 
+import lombok.Setter;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
 public abstract class Schema<T> {
-    protected boolean required;
+    @Setter
+    private boolean required;
     private final List<Predicate<T>> conditions = new LinkedList<>();
 
-    protected void addCondition(Predicate<T> condition) {
-        if (condition == null)
+    protected final void addCondition(Predicate<T> condition) {
+        if (condition == null) {
             return;
+        }
         conditions.add(condition);
     }
 
-    public boolean isValid(T value) {
+    public final boolean isValid(T value) {
         if (!requiredCheck(value)) {
             return !required && conditions.isEmpty();
         }
@@ -26,6 +30,12 @@ public abstract class Schema<T> {
         return true;
     }
 
+    /**
+     * Common realization of the required check.
+     *
+     * @param value - value for check.
+     * @return result of the check.
+     */
     protected boolean requiredCheck(T value) {
         return value != null;
     }
