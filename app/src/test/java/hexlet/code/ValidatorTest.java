@@ -14,9 +14,11 @@ class ValidatorTest {
 
     @Test
     void testStringValidator() {
+        var v = new Validator();
+        var schema = v.string();
+
         String str = "abc";
         String str1 = "abcdf";
-        StringSchema schema = new StringSchema();
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid(""));
         schema.required();
