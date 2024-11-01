@@ -20,7 +20,7 @@ public abstract class BaseSchema<T> {
 
     public final boolean isValid(T value) {
         if (!requiredCheck(value)) {
-            return !required && conditions.isEmpty();
+            return !required;
         }
         for (Predicate<T> condition : conditions) {
             if (!condition.test(value)) {
