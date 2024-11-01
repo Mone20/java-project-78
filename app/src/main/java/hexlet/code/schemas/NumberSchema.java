@@ -1,5 +1,8 @@
 package hexlet.code.schemas;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public final class NumberSchema extends BaseSchema<Integer> {
 
     public NumberSchema required() {

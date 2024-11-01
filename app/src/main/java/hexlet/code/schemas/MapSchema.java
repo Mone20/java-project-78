@@ -1,7 +1,10 @@
 package hexlet.code.schemas;
 
+import lombok.NoArgsConstructor;
+
 import java.util.Map;
 
+@NoArgsConstructor
 public final class MapSchema extends BaseSchema<Map<?, ?>> {
 
     public MapSchema required() {
