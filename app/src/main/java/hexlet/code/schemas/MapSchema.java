@@ -1,6 +1,8 @@
 package hexlet.code.schemas;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Map;
 
@@ -13,7 +15,7 @@ public final class MapSchema extends BaseSchema<Map<?, ?>> {
     }
 
     public <T> MapSchema shape(Map<?, BaseSchema<T>> schemasMap) {
-        addCondition(map -> schemasMap.entrySet().stream().allMatch(schema -> {
+        addCondition(MapConditionNames.SHAPE.getName(), map -> schemasMap.entrySet().stream().allMatch(schema -> {
             T value = (T) map.get(schema.getKey());
             var condition = schema.getValue();
             return condition.isValid(value);
@@ -22,7 +24,16 @@ public final class MapSchema extends BaseSchema<Map<?, ?>> {
     }
 
     public MapSchema sizeof(int size) {
-        addCondition(value -> value.size() == size);
+        addCondition(MapConditionNames.SIZEOF.getName(), value -> value.size() == size);
         return this;
+    }
+
+    @RequiredArgsConstructor
+    @Getter
+    private enum MapConditionNames {
+        SIZEOF("sizeof"),
+        SHAPE("shape");
+        private final String name;
+
     }
 }

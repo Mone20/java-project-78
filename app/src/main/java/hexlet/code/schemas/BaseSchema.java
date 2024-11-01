@@ -2,27 +2,28 @@ package hexlet.code.schemas;
 
 import lombok.Setter;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.function.Predicate;
 
 public abstract class BaseSchema<T> {
+
     @Setter
     private boolean required;
-    private final List<Predicate<T>> conditions = new LinkedList<>();
+    private final Map<String, Predicate<T>> conditions = new LinkedHashMap<>();
 
-    protected final void addCondition(Predicate<T> condition) {
+    protected final void addCondition(String conditionName, Predicate<T> condition) {
         if (condition == null) {
             return;
         }
-        conditions.add(condition);
+        conditions.put(conditionName, condition);
     }
 
     public final boolean isValid(T value) {
         if (!requiredCheck(value)) {
             return !required;
         }
-        for (Predicate<T> condition : conditions) {
+        for (Predicate<T> condition : conditions.values()) {
             if (!condition.test(value)) {
                 return false;
             }
