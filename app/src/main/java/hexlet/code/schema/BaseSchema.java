@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public abstract class Schema<T> {
+public abstract class BaseSchema<T> {
     @Setter
     private boolean required;
     private final List<Predicate<T>> conditions = new LinkedList<>();
