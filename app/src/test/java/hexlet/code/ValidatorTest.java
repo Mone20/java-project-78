@@ -72,7 +72,7 @@ class ValidatorTest {
         assertFalse(schema.isValid(null));
         assertTrue(schema.isValid(new HashMap<>()));
 
-        schema.sizeOf(1);
+        schema.sizeof(1);
         assertFalse(schema.isValid(new HashMap<>()));
 
 

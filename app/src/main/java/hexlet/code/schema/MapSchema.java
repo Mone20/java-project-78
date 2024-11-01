@@ -18,7 +18,7 @@ public final class MapSchema extends Schema<Map<?, ?>> {
         return this;
     }
 
-    public MapSchema sizeOf(int size) {
+    public MapSchema sizeof(int size) {
         addCondition(value -> value.size() == size);
         return this;
     }
