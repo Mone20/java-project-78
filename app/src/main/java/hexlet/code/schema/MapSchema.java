@@ -2,14 +2,14 @@ package hexlet.code.schema;
 
 import java.util.Map;
 
-public final class MapBaseSchema extends BaseSchema<Map<?, ?>> {
+public final class MapSchema extends BaseSchema<Map<?, ?>> {
 
-    public MapBaseSchema required() {
+    public MapSchema required() {
         setRequired(true);
         return this;
     }
 
-    public <T> MapBaseSchema shape(Map<?, BaseSchema<T>> schemasMap) {
+    public <T> MapSchema shape(Map<?, BaseSchema<T>> schemasMap) {
         addCondition(map -> schemasMap.entrySet().stream().allMatch(schema -> {
             T value = (T) map.get(schema.getKey());
             var condition = schema.getValue();
@@ -18,7 +18,7 @@ public final class MapBaseSchema extends BaseSchema<Map<?, ?>> {
         return this;
     }
 
-    public MapBaseSchema sizeof(int size) {
+    public MapSchema sizeof(int size) {
         addCondition(value -> value.size() == size);
         return this;
     }

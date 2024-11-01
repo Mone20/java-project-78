@@ -1,8 +1,8 @@
 package hexlet.code.schema;
 
-public final class StringBaseSchema extends BaseSchema<String> {
+public final class StringSchema extends BaseSchema<String> {
 
-    public StringBaseSchema required() {
+    public StringSchema required() {
         setRequired(true);
         return this;
     }
@@ -13,12 +13,12 @@ public final class StringBaseSchema extends BaseSchema<String> {
         return super.requiredCheck(value) && !value.isEmpty();
     }
 
-    public StringBaseSchema contains(String containsValue) {
+    public StringSchema contains(String containsValue) {
         addCondition(value -> value.contains(containsValue));
         return this;
     }
 
-    public StringBaseSchema minLength(int minLength) {
+    public StringSchema minLength(int minLength) {
         addCondition(value -> value.length() >= minLength);
         return this;
     }

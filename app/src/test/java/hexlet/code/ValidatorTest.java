@@ -1,7 +1,7 @@
 package hexlet.code;
 
 import hexlet.code.schema.BaseSchema;
-import hexlet.code.schema.StringBaseSchema;
+import hexlet.code.schema.StringSchema;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -16,7 +16,7 @@ class ValidatorTest {
     void testStringValidator() {
         String str = "abc";
         String str1 = "abcdf";
-        StringBaseSchema schema = new StringBaseSchema();
+        StringSchema schema = new StringSchema();
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid(""));
         schema.required();
